@@ -43,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   context,
                 ).showSnackBar(const SnackBar(content: Text('按鈕被點擊了！')));
               },
-              child: const Text('點擊我'),
+              child: const Text('點擊我啦～'),
             ),
           ],
         ),
