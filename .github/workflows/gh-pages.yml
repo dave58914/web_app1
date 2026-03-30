@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - master # 如果你的分支是 master，請改為此項
+      - main # 改為 main 以匹配你目前使用的主要分支名稱
 
 jobs:
   build-and-deploy:
