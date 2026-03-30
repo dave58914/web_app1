@@ -1,4 +1,5 @@
 # web_app1
+![Deploy to GitHub Pages](https://github.com/dave58914/web_app1/actions/workflows/gh-pages.yml/badge.svg)
 
 A new Flutter project.
 
