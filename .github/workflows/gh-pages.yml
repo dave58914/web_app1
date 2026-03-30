@@ -1,5 +1,10 @@
 name: Deploy to GitHub Pages
 
+# 加入並行控制：當有新的推送時，自動取消正在執行中的舊任務，節省資源並避免部署衝突
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 on:
   push:
     branches:
