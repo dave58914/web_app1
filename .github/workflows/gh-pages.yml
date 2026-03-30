@@ -28,6 +28,9 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
+      - name: Static Analysis
+        run: flutter analyze # 在建置前自動檢查程式碼品質
+
       - name: Build Web Application
         run: |
           # 使用 --base-href 確保在 GitHub Pages 的子路徑下能正確讀取資源
