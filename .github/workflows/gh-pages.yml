@@ -1,0 +1,35 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # 當代碼推送到 main 分支時觸發
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # 強制賦予寫入權限，解決部署時的 403 錯誤
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true # 開啟快取，縮短後續下載套件的時間
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build Web Application
+        run: |
+          # 使用 --base-href 確保在 GitHub Pages 的子路徑下能正確讀取資源
+          flutter build web --release --base-href "/${{ github.event.repository.name }}/"
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: build/web # 部署建置後的資料夾
+          branch: gh-pages # 部署到 gh-pages 分支
